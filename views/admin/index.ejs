@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Admin Console</title>
+    <style>
+    .alert {
+      color: #a94442;
+      background-color: #f2dede;
+      border-color: #ebccd1;
+    }
+    </style>
+  </head>
+  <body>
+    <h1>Admin Console</h1>
+    <% if (locals.errors) { %>
+    <ul class="alert">
+    <%   for (var i = 0; i < errors.length; i++) { %>
+      <li><%= errors[i]%></li>
+    <%   } %>
+    </ul>
+    <% } %>
+    <form method="POST" action="/admin">
+        <table>
+        <thead>
+            <tr>
+                <th>product id</th>
+                <th>product name</th>
+                <th>description</th>
+                <th>price</th>
+                <th>stock</th>
+                <th>option</th>
+            </tr>
+        </thead>
+        <%   for (var i = 0; i < len; i++) { %>
+            <tr>
+                <td><%= products[i]._id%></td>
+                <td><%= products[i].name%></td>
+                <td><%= products[i].description%></td>
+                <td><%= products[i].price%></td>
+                <td><%= products[i].stock%></td>
+                <td></td>
+            </tr>
+          <%   } %>
+          <tr><td></td></tr>
+            <tr>
+            <td>Add New Item:</td>
+            <td>
+                <input type="text" id="itemname" name="itemname" value=""/>
+            </td>
+            <td>
+                <input type="text" id="itemdescription" name="itemdescription" value=""/>
+            </td>
+            <td>
+                <input type="text" id="itemprice" name="itemprice" value=""/>
+            </td>
+            <td>
+                <input type="text" id="stockamount" name="stockamount" value=""/>
+            </td>
+            <td>
+                <input type="submit" value="Save" />
+            </td>
+        </tr>
+    </table>
+</form>
+
+  </body>
+</html>

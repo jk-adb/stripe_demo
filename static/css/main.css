@@ -1,0 +1,138 @@
+ul {
+    list-style-type: none;
+    display: -webkit-flex;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+li {
+    border-style: solid;
+    border-width: 0.01em;
+}
+
+.productlist {
+    width: 100%;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.productitem {
+    width: 20%;
+    margin: 8px;
+    height: 200px;
+}
+
+
+.productitem div {
+    text-align: center;
+    font-size: small;
+    font-weight: lighter;
+    padding: 0px;
+}
+
+.productitem .itemname,  .productitem .itemprice {
+    font-size: large;
+    font-weight: bolder;
+}
+
+#orderlist{
+    float:left;
+/*    width: 60%;*/
+width: 30%;
+}
+.itemlist, .ordersummary{
+    float:left;
+    width: 100%;
+}
+.payment{
+    float: left;
+/*    width: 40%;*/
+    width: 70%;
+/*    border-style: solid; */
+    border-width: 0.01em;
+    padding: 20px;
+    margin-top: 8px;
+    text-align: center;
+    font-size: large;
+    font-weight: bold;
+}
+
+#payment-element{
+    margin-bottom: 10px;
+}
+
+.shopping_list .productitem {
+    padding-top: 24px;
+    width: 100%;
+    height: 80px;
+}
+
+.shopping_list .productitem div {
+    float: left;
+    width: 30%;
+}
+
+.total .label{
+    margin-right: 20px;
+}
+
+
+button {
+  flex-direction: column;
+  align-items: center;
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: none;
+
+  background: #000000;
+  box-shadow: 0px 0.5px 1px rgba(0, 0, 0, 0.1), inset 0px 0.5px 0.5px rgba(255, 255, 255, 0.5), 0px 0px 0px 0.5px rgba(0, 0, 0, 0.12);
+  color: #DFDEDF;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.removefromcart {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 10px;
+}
+
+.btn_addtocart:focus {
+  box-shadow: inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2), 0px 0.5px 1px rgba(0, 0, 0, 0.1), 0px 0px 0px 3.5px rgba(58, 108, 217, 0.5);
+  outline: 0;
+}
+
+.cart{
+    position: relative;
+}
+.cart_icon img{
+    width: 24px;
+}
+
+.cart .count_icon {
+    position: absolute;
+    top: -4px;
+    left: -10px;
+    width: 1.2rem;
+    height: 1.2rem;
+    line-height: 1.2rem;
+    text-align: center;
+    border-radius: 50%;
+    background-color: #000;
+    font-size: 0.8rem;
+    color: #fff;
+}
+
+.hidden{
+    display: none;
+}
+
+.pagetitle{
+    width: 100%;
+    margin-top: 10px;
+    text-align: center;
+    font-weight: bold;
+    font-size: x-large;
+}

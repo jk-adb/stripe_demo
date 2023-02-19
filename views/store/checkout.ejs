@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../components/head'); %>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="/static/js/cart.js"></script>
+
+    <style>
+        .removefromcart {
+            display: none;
+        }
+    </style>
+</head>
+<body class="container">
+    <header>
+        <%- include('../components/header'); %>
+    </header>
+    <main>
+        <h1 class="pagetitle">Place Your Order</h1>
+        <div id="orderlist">
+            <div class="ordersummary">
+                <p>Order Summary</p>
+                <p>
+                    <span class="label">Total:</span>
+                    <span class="currencysymbol">¥</span>
+                    <span id="totalprice"></span>
+                </p>
+            </div>
+            <div class="itemlist">
+                <ul id="shopping_list" class="shopping_list"></ul>
+            </div>
+        </div>
+        <div class="payment">
+            <form id="payment-form">
+                <div id="link-authentication-element">
+                    <!--Stripe.js injects the Link Authentication Element-->
+                </div>
+                <div id="payment-element">
+                    <!--Stripe.js injects the Payment Element-->
+                </div>
+                <button id="submit">
+                    <div class="spinner hidden" id="spinner"></div>
+                    <span id="button-text">Pay</span>
+                </button>
+                <div id="payment-message" class="hidden"></div>
+            </form>  
+        </div>
+        <div id="empty" class="hidden"></div>
+    </main>
+    <footer>
+        <%- include('../components/footer'); %>
+    </footer>
+</body>
+<script src="/static/js/checkout.js"></script>
+</html>

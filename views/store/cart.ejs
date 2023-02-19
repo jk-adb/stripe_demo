@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../components/head'); %>
+    <script src="/static/js/cart.js"></script>
+</head>
+<body class="container">
+    <header>
+        <%- include('../components/header'); %>
+    </header>
+    <main>
+        <h1 class="pagetitle">Your Cart</h1>
+        <div id="cart">
+                <div class="itemlist">
+                <ul id="shopping_list" class="shopping_list">
+                </ul>
+            </div>
+            <div class="total">
+                <p>Order Summary</p>
+                <p>
+                    <span class="label">Total:</span>
+                    <span class="currencysymbol">¥</span>
+                    <span id="totalprice"></span>
+                </p>
+                <button id="checkout" class="checkout_btn">Checkout</button>
+            </div>
+        </div>
+        <div id="empty" class="hidden"></div>
+    </main>
+    <footer>
+        <%- include('../components/footer'); %>
+    </footer>
+</body>
+</html>
