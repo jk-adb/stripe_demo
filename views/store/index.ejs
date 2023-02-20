@@ -13,15 +13,6 @@
         <h1 class="pagetitle">Product Lineup</h1>
         <div>
             <ul class="productlist" id="productlist">
-                <%   for (var i = 0; i < len; i++) { %>
-                    <li class="productitem">
-                        <div class="itemname"><%= products[i].name%></div>
-                        <div class="itemdescription"><%= products[i].description%></div>
-                        <div class="itemprice"><%= products[i].price%></div>
-                        <div class="itemsstock"><%= products[i].stock%></div>
-                        <div class="addtocart"><button class="btn_addtocart" role="button" data-name="<%=products[i].name%>" data-id="<%=products[i]._id%>" data-price="<%=products[i].price%>">Add to Cart</button></div>
-                    </li>
-                    <%   } %>
             </ul>
         </div>
     </main>

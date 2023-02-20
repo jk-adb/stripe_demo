@@ -20,7 +20,7 @@ li {
 .productitem {
     width: 20%;
     margin: 8px;
-    height: 200px;
+    height: 350px;
 }
 
 
@@ -135,4 +135,10 @@ button {
     text-align: center;
     font-weight: bold;
     font-size: x-large;
+}
+
+.itemimage img{
+    align-items: center;
+    margin: 20px;
+    width: 80%;
 }

@@ -7,13 +7,7 @@ require('dotenv').config({ path: './.env' });
 checkEnv();
 
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
-
 /*
-const s_products = await stripe.products.list({
-  limit: 10,
-});
-*/
-
 var nedb = require('nedb');
 var db = {};
 db.products = new nedb({
@@ -34,6 +28,10 @@ router.get('/', function(request, response){
         }
         response.render('./store/index', { products: products, len: result.length});
     });
+});
+*/
+router.get('/', function(request, response){
+  response.render('./store/index');
 });
 
 router.get('/products', async function(request, response) {
@@ -72,9 +70,8 @@ router.post('/create-payment-intent', async (request, response) => {
 });
 
 const calculateOrderAmount = (items) => {
-  console.log(items);
+
   let _items = JSON.parse(items);
-  console.log(_items.length);
 
   var total_amount = 0;
   for (let i=0; i<_items.length; i++){
