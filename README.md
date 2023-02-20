@@ -17,3 +17,7 @@ localhost:3000
 add some products from stripe UI
 price: JPY
 
+Specs:
+product data is managed on Stripe
+cart object is store in client's local storage
+
