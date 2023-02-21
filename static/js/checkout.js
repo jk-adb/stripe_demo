@@ -14,11 +14,8 @@ let elements;
 let emailAddress = '';
 
 initialize();
-checkStatus();
 
 document.querySelector("#payment-form").addEventListener("submit", handleSubmit);
-
-var cart = localStorage.getItem("cart_items");
 
 // Fetches a payment intent and captures the client secret
 async function initialize() {
@@ -57,7 +54,8 @@ async function handleSubmit(e) {
     elements,
     confirmParams: {
       // Make sure to change this to your payment completion page
-      return_url: "http://localhost:3000/checkout",
+//      return_url: "http://localhost:3000/checkout",
+      return_url: "http://localhost:3000/complete-payment",
       receipt_email: emailAddress
     },
   });
@@ -76,35 +74,6 @@ async function handleSubmit(e) {
   setLoading(false);
 }
 
-// Fetches the payment intent status after payment submission
-async function checkStatus() {
-  const clientSecret = new URLSearchParams(window.location.search).get(
-    "payment_intent_client_secret"
-  );
-
-  if (!clientSecret) {
-    return;
-  }
-
-  const { paymentIntent } = await stripe.retrievePaymentIntent(clientSecret);
-  switch (paymentIntent.status) {
-    case "succeeded":
-      showMessage("Payment succeeded!");
-      clearCart();
-      removeOrderList();
-      break;
-    case "processing":
-      showMessage("Your payment is processing.");
-      break;
-    case "requires_payment_method":
-      showMessage("Your payment was not successful, please try again.");
-      break;
-    default:
-      showMessage("Something went wrong.");
-      break;
-  }
-}
-
 // ------- UI helpers -------
 
 function showMessage(messageText) {
@@ -117,14 +86,6 @@ function showMessage(messageText) {
     messageContainer.classList.add("hidden");
     messageText.textContent = "";
   }, 4000);
-}
-
-function removeOrderForm(){
-  document.getElementById("orderlist").remove();
-  document.getElementById("payment").remove();
-}
-function clearCart() {
-  localStorage.removeItem("cart_items");
 }
 
 // Show a spinner on payment submission
@@ -140,23 +101,3 @@ function setLoading(isLoading) {
     document.querySelector("#button-text").classList.remove("hidden");
   }
 }
-/*
-function place_order() {
-  var url = location.href; 
-  var data = localStorage.getItem("cart_items");
-$.ajax({
-    url: 'create-checkout-session',
-    type: 'POST',
-    contentType: 'application/json',
-    dataType:"json",
-    timeout: 60000,
-    data: data
-  })
-    .done(function (msg) {
-    })
-    .fail(function () {
-    })
-    .always(function () {
-    });
-}
-*/

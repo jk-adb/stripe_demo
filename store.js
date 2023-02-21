@@ -7,29 +7,6 @@ require('dotenv').config({ path: './.env' });
 checkEnv();
 
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
-/*
-var nedb = require('nedb');
-var db = {};
-db.products = new nedb({
-    filename: 'data/products.db'
-});
-db.products.loadDatabase();
-
-router.get('/', function(request, response){
-    db.products.find({}, function (error, result){
-        if(error){
-            console.log("error");
-            return;
-        }
-        let products = {}; 
-        for (let i=0; i<result.length; i++){
-            products[i] = result[i]
-            console.log(products[i]);
-        }
-        response.render('./store/index', { products: products, len: result.length});
-    });
-});
-*/
 
 router.get('/', function(request, response){
   response.render('./store/index');
@@ -79,6 +56,17 @@ router.post('/create-payment-intent', async (request, response) => {
   console.log(paymentIntent.client_secret);
 });
 
+router.get('/complete-payment', async (request, response) => {
+  response.render('store/complete-payment');
+});
+
+// Fetch the Checkout Session to display the JSON result on the success page
+router.get('/checkout-session', async (request, response) => {
+  const { sessionId } = request.query;
+  const session = await stripe.checkout.sessions.retrieve(sessionId);
+  response.send(session);
+});
+
 const calculateOrderAmount = (items) => {
 
   let _items = JSON.parse(items);
@@ -109,5 +97,15 @@ function checkEnv() {
   router.get('/s_credentials.js', function(request, response){
     response.write("const stripe = Stripe(" + STRIPE_PUBLISHABLE_KEY +");");
   });
+
+  app.get('/config', async (req, res) => {
+  const price = await stripe.prices.retrieve(process.env.PRICE);
+
+  res.send({
+    publicKey: process.env.STRIPE_PUBLISHABLE_KEY,
+    unitAmount: price.unit_amount,
+    currency: price.currency,
+  });
+});
 */  
 module.exports = router;

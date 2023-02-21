@@ -1,3 +1,6 @@
+var count_icon = document.getElementById('count');
+const cart_item_name = "cart_items";
+
 function update_cart_count(count){
     var count_element = document.getElementById('count');
     if( count > 0 ){
@@ -8,13 +11,19 @@ function update_cart_count(count){
     count_element.innerHTML = count;
 }
 
+function initialize_cart(){
+    update_cart_count(0);
+    localStorage.removeItem("cart_items");
+    count_icon.parentNode.classList.add("hidden");
+}
+
 window.onload = function(){
     var cart_btns = document.querySelectorAll('.btn_addtocart'),
     count_icon = document.getElementById('count'),
     cart_items =[],
     cart_count = 0;
 
-    cart_items = JSON.parse(localStorage.getItem("cart_items"));
+    cart_items = JSON.parse(localStorage.getItem(cart_item_name));
     if(cart_items != null && cart_items.length > 0){
         cart_count = cart_items.length;
         count_icon.innerHTML = cart_count;
@@ -44,7 +53,7 @@ window.onload = function(){
                 cart_count++;
                 update_cart_count(cart_count);
             }
-            localStorage.setItem("cart_items",JSON.stringify(cart_items));
+            localStorage.setItem(cart_item_name,JSON.stringify(cart_items));
         });
     });
 }

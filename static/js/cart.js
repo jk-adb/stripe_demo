@@ -22,9 +22,10 @@ window.onload = function () {
         var itemlist = document.createElement('li'),
         itemname = document.createElement('div'),
         itemprice = document.createElement('div'),
-        removebutton_span = document.createElement('span'),
-        removebutton = document.createElement('button');
-
+        itemimage_container = document.createElement('div'),
+        itemimage = document.createElement('img')
+        removebutton_container = document.createElement('span'),
+        removebutton = document.createElement('button')
 
         itemlist.classList.add("productitem");
         
@@ -34,7 +35,11 @@ window.onload = function () {
         itemprice.classList.add("itemprice");
         itemprice.appendChild(document.createTextNode(cart_items[i].item_price));
 
-        removebutton_span.classList.add("removefromcart");
+        itemimage_container.classList.add("itemimage");
+        itemimage.src = cart_items[i].item_image;
+        itemimage_container.appendChild(itemimage);
+
+        removebutton_container.classList.add("removefromcart");
         removebutton.classList.add("btn_removefromcart");
 
         var itemid = document.createAttribute("data-id");
@@ -62,11 +67,12 @@ window.onload = function () {
             localStorage.setItem("cart_items",JSON.stringify(cart_items));
         });
         
-        removebutton_span.appendChild(removebutton);
+        removebutton_container.appendChild(removebutton);
         
+        itemlist.appendChild(itemimage_container);
         itemlist.appendChild(itemname);
         itemlist.appendChild(itemprice);
-        itemlist.appendChild(removebutton_span);
+        itemlist.appendChild(removebutton_container);
 
         fragment.appendChild(itemlist);
 

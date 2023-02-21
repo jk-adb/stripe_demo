@@ -68,7 +68,7 @@ async function displayProducts(productlist){
         addbutton.setAttributeNode(data_itemname);
 
         var data_itemimage = document.createAttribute("data-img");
-        data_itemimage.value = productlist[i].img_url;
+        data_itemimage.value = image_url;
         addbutton.setAttributeNode(data_itemimage);
 
         addbutton.classList.add("btn_addtocart");
@@ -92,10 +92,12 @@ async function displayProducts(productlist){
                 var item_id = this.dataset.id;
                 var item_name = this.dataset.name;
                 var item_price = this.dataset.price;
+                var item_image = this.dataset.img;
                 cart_items.push({
                     item_id: item_id,
                     item_name: item_name,
-                    item_price: item_price
+                    item_price: item_price,
+                    item_image: item_image
                 });
 
                 cart_count++;
