@@ -1,5 +1,4 @@
 
-const stripe = Stripe("pk_test_51McrhWFqStijJfHdbGUOWhbV7IETmBu0Z5zbNyf649226BXy0srEVbGUJadTBMATs8LgeyrKLK7o5nhzDk2dqUQT00xEJy0NHS");
 const items = localStorage.getItem("cart_items");
 
 // Fetches the payment intent status after payment submission
