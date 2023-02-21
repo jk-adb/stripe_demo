@@ -8,8 +8,8 @@
 ```
 $ git clone https://github.com/jk-adb/stripe_demo.git
 $ mv stripe_demo
-$ echo STRIPEmv stripe_demo
-
+$ echo STRIPE_PUBLISHABLE_KEY=<INPUT YOUR STRIPE PUBLISH KEY> >> .env
+$ echo STRIPE_SECRET_KEY=<INPUT YOUR STRIPE PUBLISH KEY> >> .env
 ```
 git clone
 
