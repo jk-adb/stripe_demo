@@ -12,7 +12,7 @@ async function createProductList() {
 
 }
 
-function displayProducts(productlist){
+async function displayProducts(productlist){
 
     var fragment = document.createDocumentFragment();
 
@@ -33,9 +33,6 @@ function displayProducts(productlist){
         itemdescription.classList.add("itemdescription");
         itemdescription.appendChild(document.createTextNode(productlist[i].description));
 
-        itemprice.classList.add("itemprice");
-        itemprice.appendChild(document.createTextNode(productlist[i].default_price));
-
         var itemimage_container = document.createElement('div');
         itemimage_container.classList.add("itemimage");
 
@@ -53,9 +50,17 @@ function displayProducts(productlist){
         data_itemid.value = productlist[i].id;
         addbutton.setAttributeNode(data_itemid);
 
+        var data_itempriceid = document.createAttribute("data-priceid");
         var data_itemprice = document.createAttribute("data-price");
 //        data_itemprice.value = productlist[i].defaultprice;
-        data_itemprice.value = 10000;
+
+        itemprice.classList.add("itemprice");
+        itemprice.id = productlist[i].default_price;
+//        itemprice.appendChild(document.createTextNode(productlist[i].default_price));
+
+        data_itempriceid.value = productlist[i].default_price;
+        data_itemprice.value = "xxxxx";
+        addbutton.setAttributeNode(data_itempriceid);
         addbutton.setAttributeNode(data_itemprice);
 
         var data_itemname = document.createAttribute("data-name");
@@ -110,5 +115,33 @@ function displayProducts(productlist){
     }
 
     document.getElementById("productlist").appendChild(fragment);
+    setItemPrice();
+}
 
+function setItemPrice() {
+    const itemprices =  document.querySelectorAll('.itemprice');
+
+    Promise.all(Array.from(itemprices).map(async item => {
+        const price = await retrievePrice(item.id)
+        item.innerHTML = "JPY: " + price;
+
+        var addbutton = document.querySelector("button[data-priceid='" + item.id + "']")
+        var data_itemprice = document.createAttribute("data-price");
+        data_itemprice.value = price;
+        addbutton.setAttributeNode(data_itemprice);
+    }));
+    console.log('done!')
+}
+
+async function retrievePrice(priceid){
+    const params = {priceid : priceid};
+    const query_params = new URLSearchParams(params); 
+    const response = await fetch("/productprice?" + query_params.toString(), {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+    });
+    const { unit_amount } = await response.json();
+    console.log(unit_amount);
+
+    return unit_amount;
 }

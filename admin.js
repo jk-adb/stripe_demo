@@ -66,7 +66,5 @@ router.post("/complete", function (request, response) {
     }
    
 });
-  
-
  
 module.exports = router;

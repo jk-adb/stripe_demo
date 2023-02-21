@@ -30,6 +30,7 @@ router.get('/', function(request, response){
     });
 });
 */
+
 router.get('/', function(request, response){
   response.render('./store/index');
 });
@@ -42,6 +43,15 @@ router.get('/products', async function(request, response) {
   return response.json(products);
 });
 
+router.get('/productprice', async function(request, response) {
+  const priceid = request.query.priceid;
+  console.log(priceid);
+  const price = await stripe.prices.retrieve(
+    priceid,
+  );
+  console.log(price);
+  return await response.json(price);
+});
 
 router.get('/cart', function(request, response){
     response.render('store/cart');
@@ -74,10 +84,12 @@ const calculateOrderAmount = (items) => {
   let _items = JSON.parse(items);
 
   var total_amount = 0;
-  for (let i=0; i<_items.length; i++){
-    console.log(_items[i].item_id);
-    total_amount = parseInt(total_amount) + parseInt(_items[i].item_price);
-    console.log(total_amount);
+  if(_items != null){
+    for (let i=0; i<_items.length; i++){
+      console.log(_items[i].item_id);
+      total_amount = parseInt(total_amount) + parseInt(_items[i].item_price);
+      console.log(total_amount);
+    }  
   }
 
   // Replace this constant with a calculation of the order's amount
@@ -93,5 +105,9 @@ function checkEnv() {
       process.exit(0);
     }
   }
-
+/*
+  router.get('/s_credentials.js', function(request, response){
+    response.write("const stripe = Stripe(" + STRIPE_PUBLISHABLE_KEY +");");
+  });
+*/  
 module.exports = router;

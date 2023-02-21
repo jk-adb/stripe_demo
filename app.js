@@ -1,7 +1,8 @@
 const express = require('express');
 const app = express();
 const ejs = require('ejs');
-  
+
+/*
 var nedb = require('nedb');
 var db = {};
 db.products = new nedb({
@@ -12,6 +13,7 @@ db.transactions = new nedb({
 });
 db.products.loadDatabase();
 db.transactions.loadDatabase();
+*/
 
 var bodyParser = require("body-parser");
 
