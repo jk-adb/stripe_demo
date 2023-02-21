@@ -32,8 +32,9 @@ $ npm start
 <img width="1127" alt="image" src="https://user-images.githubusercontent.com/51877498/220267931-5f5b8e63-1554-4a9e-80e0-7632985c5617.png">
 -->
 <img width="600" src="https://user-images.githubusercontent.com/51877498/220299979-35a64351-2de5-45ea-a7c0-5756c3e1fb2e.gif">
-
+<!--
 ![画面収録_2023-02-21_17_47_20_AdobeExpress (1)](https://user-images.githubusercontent.com/51877498/220299979-35a64351-2de5-45ea-a7c0-5756c3e1fb2e.gif)
+-->
 
 ## Notes
 - Product items are fetched from Stripe.
