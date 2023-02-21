@@ -5,8 +5,12 @@
 - Make sure you have Node.js v18.14.1 installed locally.
 
 ### 2. Clone and configure the demo
-`$ git clone https://github.com/jk-adb/stripe_demo.git`
-`$ mv stripe_demo`
+```
+$ git clone https://github.com/jk-adb/stripe_demo.git
+$ mv stripe_demo
+$ echo STRIPEmv stripe_demo
+
+```
 git clone
 
 instal node
