@@ -36,6 +36,6 @@ $ npm start
 ![画面収録_2023-02-21_17_47_20_AdobeExpress (1)](https://user-images.githubusercontent.com/51877498/220299979-35a64351-2de5-45ea-a7c0-5756c3e1fb2e.gif)
 -->
 
-## Notes
+# Notes
 - Product items are fetched from Stripe.
 - Cart object is store in client's local storage.
