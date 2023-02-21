@@ -28,8 +28,10 @@ $ npm start
 
 ### 4. Visit the demo store
 - http://localhost:3000
-<img width="1127" alt="image" src="https://user-images.githubusercontent.com/51877498/220267931-5f5b8e63-1554-4a9e-80e0-7632985c5617.png">
+<img width="1127" alt="image" src="https://user-images.githubusercontent.com/51877498/220267931-5f5b8e63-1554-4a9e-80e0-7632985c5617.png">![画面収録_2023-02-21_17_47_20_AdobeExpress](https://user-images.githubusercontent.com/51877498/220298163-66663c4b-e845-49ac-8add-ee1adeded4bd.gif)
+![画面収録_2023-02-21_17_47_20_AdobeExpress](https://user-images.githubusercontent.com/51877498/220298163-66663c4b-e845-49ac-8add-ee1adeded4bd.gif)
 
+![画面収録_2023-02-21_17_47_20_AdobeExpress](https://user-images.githubusercontent.com/51877498/220297901-0208af79-b7c5-42d7-ae1c-d727bb0f9857.gif)
 
 
 ## Notes
