@@ -6,29 +6,27 @@
 
 ### 2. Clone and configure the demo
 ```
+## Clone from git repository
 $ git clone https://github.com/jk-adb/stripe_demo.git
 $ mv stripe_demo
+
+## Add your stripe api keys to config file
 $ echo STRIPE_PUBLISHABLE_KEY=<INPUT YOUR STRIPE PUBLISH KEY> >> .env
-$ echo STRIPE_SECRET_KEY=<INPUT YOUR STRIPE PUBLISH KEY> >> .env
+$ echo STRIPE_SECRET_KEY=<INPUT YOUR STRIPE SECRET KEY> >> .env
+
+## Run demo application
+$ npm install
+$ npm start
 ```
-git clone
 
-instal node
+### 3. Create product data from Stripe dashboard
+- Choose JPY in price currency option.
 
-rename .env.example > .env
 
-input your stripe key
+### 4. Visit the demo store
+- http://localhost:3000
 
-npm install
 
-npm start
-
-localhost:3000
-
-add some products from stripe UI
-price: JPY
-
-Specs:
-product data is managed on Stripe
+## Notes
 cart object is store in client's local storage
 
