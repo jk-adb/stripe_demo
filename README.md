@@ -1,5 +1,11 @@
-# stripe_demo
+# Getting started with demo application
 
+## How to run locally
+### 1. Prerequirement
+- Make sure you have Node.js v18.14.1 installed locally.
+
+### 2. Clone and configure the demo
+`$git clone https://github.com/jk-adb/stripe_demo/`
 git clone
 
 instal node
