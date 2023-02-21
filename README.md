@@ -28,6 +28,8 @@ $ npm start
 
 ### 4. Visit the demo store
 - http://localhost:3000
+<img width="1127" alt="image" src="https://user-images.githubusercontent.com/51877498/220267931-5f5b8e63-1554-4a9e-80e0-7632985c5617.png">
+
 
 
 ## Notes
