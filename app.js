@@ -26,6 +26,6 @@ app.use("/admin", require("./admin.js"));
 
 app.use("/", require("./store.js"));
 
-app.listen(3000);
+app.listen(3000, () => console.log("Your store is running on http://localhost:3000"));
 
   

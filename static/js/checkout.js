@@ -1,10 +1,9 @@
 // This is a public sample test API key.
 // Don’t submit any personally identifiable information in requests made with this key.
 // Sign in to see your own test API key embedded in code samples.
-const stripe = Stripe("pk_test_51McrhWFqStijJfHdbGUOWhbV7IETmBu0Z5zbNyf649226BXy0srEVbGUJadTBMATs8LgeyrKLK7o5nhzDk2dqUQT00xEJy0NHS");
 //const stripe = Stripe(env.STRIPE_PUBLISHABLE_KEY);
-//import stripe from '/s_credintials.js';
 //const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+//const stripe = Stripe("pk_test_51McrhWFqStijJfHdbGUOWhbV7IETmBu0Z5zbNyf649226BXy0srEVbGUJadTBMATs8LgeyrKLK7o5nhzDk2dqUQT00xEJy0NHS");
 
 // The items the customer wants to buy
 //const items = [{ id: "xl-tshirt" }];

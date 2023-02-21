@@ -2,7 +2,7 @@ const router = require("express").Router();
 
 const { resolve } = require('path');
 
-require('dotenv').config({ path: './.env' });
+const dotenv = require('dotenv').config({ path: './.env' });
 
 checkEnv();
 
@@ -86,16 +86,20 @@ const calculateOrderAmount = (items) => {
   return parseInt(total_amount);
 };
 
+router.get('/s_config.js', async (reqyest, response) => {
+  response.send("const stripe = Stripe('" + process.env.STRIPE_PUBLISHABLE_KEY +"');");
+});
+
 function checkEnv() {
-    const price = process.env.PRICE;
-    if(price === "price_12345" || !price) {
-      console.log("You must set a Price ID in the environment variables. Please see the README.");
+  const pub_key = dotenv.STRIPE_PUBLISHABLE_KEY;
+  const secret_key = dotenv.STRIPE_SECRET_KEY;
+  if(pub_key || secret_key) {
+      console.log("You must set STRIPE_PUBLISHABLE_KEY and STRIPE_SECRET_KEY in the environment variables. Please see the README.");
       process.exit(0);
-    }
-  }
-/*
+    }  }
+
+    /*
   router.get('/s_credentials.js', function(request, response){
-    response.write("const stripe = Stripe(" + STRIPE_PUBLISHABLE_KEY +");");
   });
 
   app.get('/config', async (req, res) => {
