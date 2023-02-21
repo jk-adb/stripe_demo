@@ -11,7 +11,7 @@ $ node -v
 ```
 ## Clone from git repository
 $ git clone https://github.com/jk-adb/stripe_demo.git
-$ mv stripe_demo
+$ cd stripe_demo
 
 ## Add your stripe api keys to config file
 $ echo STRIPE_PUBLISHABLE_KEY=<INPUT YOUR STRIPE PUBLISH KEY> >> .env
