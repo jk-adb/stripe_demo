@@ -35,4 +35,3 @@ $ npm start
 ## Notes
 - Product items are fetched from Stripe.
 - Cart object is store in client's local storage.
-
