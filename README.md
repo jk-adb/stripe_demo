@@ -14,8 +14,8 @@ $ git clone https://github.com/jk-adb/stripe_demo.git
 $ cd stripe_demo
 
 ## Add your stripe api keys to config file
-$ echo STRIPE_PUBLISHABLE_KEY=<INPUT YOUR STRIPE PUBLISH KEY> >> .env
-$ echo STRIPE_SECRET_KEY=<INPUT YOUR STRIPE SECRET KEY> >> .env
+$ echo STRIPE_PUBLISHABLE_KEY="INPUT YOUR STRIPE PUBLISH KEY" >> .env
+$ echo STRIPE_SECRET_KEY="INPUT YOUR STRIPE SECRET KEY" >> .env
 
 ## Run demo application
 $ npm install
