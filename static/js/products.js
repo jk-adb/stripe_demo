@@ -99,12 +99,19 @@ async function displayProducts(productlist){
                     item_price: item_price,
                     item_image: item_image
                 });
-
                 cart_count++;
                 update_cart_count(cart_count);
+                this.disabled = true;
             }
             localStorage.setItem("cart_items",JSON.stringify(cart_items));
         });
+        var cart_items = JSON.parse(localStorage.getItem("cart_items"));
+        if(cart_items != null && cart_items.length > 0){
+            var item_index = cart_items.find((obj) => obj.item_id == productlist[i].id);
+            if(item_index != null){
+                addbutton.disabled = true;
+            }
+        }
         addbutton_container.appendChild(addbutton);
     
         itemlist.appendChild(itemimage_container);

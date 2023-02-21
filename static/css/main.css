@@ -92,6 +92,11 @@ button {
   touch-action: manipulation;
 }
 
+button:disabled{  
+    background: #b7b6b6;
+}
+  
+
 .removefromcart {
     display: flex;
     justify-content: flex-end;
