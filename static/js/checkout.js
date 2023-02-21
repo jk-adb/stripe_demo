@@ -48,13 +48,13 @@ async function initialize() {
 async function handleSubmit(e) {
   e.preventDefault();
   setLoading(true);
-
+  const return_url = window.location.origin + "/complete-payment";
   const { error } = await stripe.confirmPayment({
     elements,
     confirmParams: {
       // Make sure to change this to your payment completion page
 //      return_url: "http://localhost:3000/checkout",
-      return_url: "http://localhost:3000/complete-payment",
+      return_url:  return_url,
       receipt_email: emailAddress
     },
   });

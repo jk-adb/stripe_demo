@@ -3,6 +3,7 @@
 <head>
     <%- include('../components/head'); %>
     <script src="https://js.stripe.com/v3/"></script>
+    <script src="/s_config.js"></script>
     <script src="/static/js/complete-payment.js"></script>
     <script src="/static/js/products.js"></script>
 </head>
@@ -19,7 +20,7 @@
 
         <div class="sr-payment-summary completed-view">
             <h4>
-              View CheckoutSession response:
+              CheckoutSession response:
             </h4>
           </div>
           <div class="sr-section completed-view">
@@ -28,14 +29,14 @@
             </div>
           </div>  
         </div>
-        <div>
+        <div class="recommendation">
             <h2 class="subtitle">Recommendation:</h2>
             <div>
                 <ul class="productlist" id="productlist">
                 </ul>
             </div>
         </div>
-        <div>
+        <div class="backtohome">
             <button onclick="window.location.href = '/';">Back to Home</button>
         </div>
     </main>

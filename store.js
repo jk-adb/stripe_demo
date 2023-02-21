@@ -91,25 +91,11 @@ router.get('/s_config.js', async (reqyest, response) => {
 });
 
 function checkEnv() {
-  const pub_key = dotenv.STRIPE_PUBLISHABLE_KEY;
-  const secret_key = dotenv.STRIPE_SECRET_KEY;
-  if(pub_key || secret_key) {
+  const pub_key = process.env.STRIPE_PUBLISHABLE_KEY;
+  const secret_key = process.env.STRIPE_SECRET_KEY;
+  if(!pub_key || !secret_key) {
       console.log("You must set STRIPE_PUBLISHABLE_KEY and STRIPE_SECRET_KEY in the environment variables. Please see the README.");
       process.exit(0);
     }  }
 
-    /*
-  router.get('/s_credentials.js', function(request, response){
-  });
-
-  app.get('/config', async (req, res) => {
-  const price = await stripe.prices.retrieve(process.env.PRICE);
-
-  res.send({
-    publicKey: process.env.STRIPE_PUBLISHABLE_KEY,
-    unitAmount: price.unit_amount,
-    currency: price.currency,
-  });
-});
-*/  
 module.exports = router;
