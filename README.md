@@ -33,5 +33,6 @@ $ npm start
 
 
 ## Notes
-cart object is store in client's local storage
+- Product items are fetched from Stripe.
+- Cart object is store in client's local storage.
 
