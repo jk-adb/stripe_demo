@@ -3,6 +3,9 @@
 ## How to run locally
 ### 1. Prerequirement
 - Make sure you have Node.js v18.14.1 installed locally.
+```
+$ node -v
+```
 
 ### 2. Clone and configure the demo
 ```
