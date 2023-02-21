@@ -2,7 +2,7 @@ const router = require("express").Router();
 
 const { resolve } = require('path');
 
-const dotenv = require('dotenv').config({ path: './.env' });
+require('dotenv').config({ path: './.env' });
 
 checkEnv();
 
