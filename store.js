@@ -60,6 +60,15 @@ router.get('/complete-payment', async (request, response) => {
   response.render('store/complete-payment');
 });
 
+router.get('/payment-history', async (request, response) => {
+  const paymenthistory = await stripe.paymentIntents.search({
+    query: 'status:\'succeeded\'',
+    limit: request.limit,
+  });
+  console.log(paymenthistory);
+  response.render('store/payment-history', { data: paymenthistory.data});
+});
+
 // Fetch the Checkout Session to display the JSON result on the success page
 router.get('/checkout-session', async (request, response) => {
   const { sessionId } = request.query;

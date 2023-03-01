@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../components/head'); %>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="/s_config.js"></script>
+<!--
+    <script src="/static/js/payment-history.js"></script>
+    <script>retrievePaymentHistory()</script>
+-->
+</head>
+<body class="container">
+    <header>
+        <%- include('../components/header'); %>
+    </header>
+    <main>
+        <div>
+        <h1 class="pagetitle">Payment History</h1>
+        <div class="payment-history">
+          <ul>
+            <% var paymentlist =  data %>
+            <% console.log(paymentlist)%>
+            <%
+            Object.keys(paymentlist).forEach((key) => {
+            %>
+              <li>
+                <%= paymentlist[key].id %>
+                <%= paymentlist[key].receipt_email %>
+              </li>
+            <%
+            });
+            %>
+          </ul>
+        </div>
+        <div class="backtohome">
+            <button onclick="window.location.href = '/';">Back to Home</button>
+        </div>
+    </main>
+    <footer>
+        <%- include('../components/footer'); %>
+    </footer>
+    <ul>
+    </ul>
+</body>
+</html>
