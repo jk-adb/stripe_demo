@@ -59,7 +59,6 @@ async function displayProducts(productlist){
 //        itemprice.appendChild(document.createTextNode(productlist[i].default_price));
 
         data_itempriceid.value = productlist[i].default_price;
-        data_itemprice.value = "xxxxx";
         addbutton.setAttributeNode(data_itempriceid);
         addbutton.setAttributeNode(data_itemprice);
 
@@ -73,7 +72,6 @@ async function displayProducts(productlist){
 
         addbutton.classList.add("btn_addtocart");
         addbutton.appendChild(document.createTextNode("Add to Cart"));
-        //<div class="addtocart"><button class="btn_addtocart" role="button" data-name="1" data-id="qyvOUDHrYISQYuWa" data-price="3">Add to Cart</button></div>
         addbutton.addEventListener('click', function(){
             var cart_items = JSON.parse(localStorage.getItem("cart_items"));
             var cart_count = 0;
