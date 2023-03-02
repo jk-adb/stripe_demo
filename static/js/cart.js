@@ -3,9 +3,11 @@ function update_total_price(itemprice){
     var total_price = total_element.textContent;
     if(!isNaN(total_price) && !isNaN(itemprice)){
         total_price = parseInt(total_price) + parseInt(itemprice);
+        if(!total_price > 0){
+            disableCheckout();
+        }
     }
     total_element.innerHTML = total_price;
-
 }
 
 window.onload = function () {
@@ -19,38 +21,24 @@ window.onload = function () {
     if (cart_items) {
         var cart_count = cart_items.length;
         for (var i = 0; i < cart_items.length; i++) {
-        var itemlist = document.createElement('li'),
-        itemname = document.createElement('div'),
-        itemprice = document.createElement('div'),
-        itemimage_container = document.createElement('div'),
-        itemimage = document.createElement('img')
-        removebutton_container = document.createElement('span'),
-        removebutton = document.createElement('button')
+        var item_DOM = "<li class='productitem'>" +
+        "<div class='itemname'>" + cart_items[i].item_name + "</div>" +
+        "<div class='itemprice'>" + cart_items[i].item_price + "</div>" +
+        "<div class='itemimage'>"+
+            "<img src='" + cart_items[i].item_image + "'/>" +
+        "</div>"+
+        "<span class='removefromcart'>" +
+            "<button class='btn_removefromcart' id='btn_removefromcart_" + cart_items[i].item_id + "'" +
+            " data-id='" + cart_items[i].item_id + "'" +
+            " data-price='" + cart_items[i].item_price + "'>" +
+            "Remove" +
+            "</button>" +
+        "</span>" +
+        "</li>";
 
-        itemlist.classList.add("productitem");
-        
-        itemname.classList.add("itemname");
-        itemname.appendChild(document.createTextNode(cart_items[i].item_name));
+        document.getElementById("shopping_list").insertAdjacentHTML("beforeend", item_DOM);
 
-        itemprice.classList.add("itemprice");
-        itemprice.appendChild(document.createTextNode(cart_items[i].item_price));
-
-        itemimage_container.classList.add("itemimage");
-        itemimage.src = cart_items[i].item_image;
-        itemimage_container.appendChild(itemimage);
-
-        removebutton_container.classList.add("removefromcart");
-        removebutton.classList.add("btn_removefromcart");
-
-        var itemid = document.createAttribute("data-id");
-        itemid.value = cart_items[i].item_id;
-        removebutton.setAttributeNode(itemid);
-
-        var itemprice_d = document.createAttribute("data-price");
-        itemprice_d.value = cart_items[i].item_price;
-        removebutton.setAttributeNode(itemprice_d);
-
-        removebutton.appendChild(document.createTextNode("Remove"));
+        var removebutton = document.getElementById("btn_removefromcart_" + cart_items[i].item_id);
         removebutton.addEventListener('click', function(){
             var item_index = cart_items.find((obj) => obj.item_id == this.dataset.id);
             if(item_index != null){
@@ -66,15 +54,7 @@ window.onload = function () {
             this.closest(".productitem").remove();
             localStorage.setItem("cart_items",JSON.stringify(cart_items));
         });
-        
-        removebutton_container.appendChild(removebutton);
-        
-        itemlist.appendChild(itemimage_container);
-        itemlist.appendChild(itemname);
-        itemlist.appendChild(itemprice);
-        itemlist.appendChild(removebutton_container);
 
-        fragment.appendChild(itemlist);
 
         var itemprice = cart_items[i].item_price;
         if(!isNaN(itemprice)){
@@ -82,8 +62,11 @@ window.onload = function () {
         }
       }
     }
-    element_shopping_list.appendChild(fragment);
+//    element_shopping_list.appendChild(fragment);
     element_total.innerHTML = total;
+    if(!total > 0){
+        disableCheckout();
+    }
 
     count_icon = document.getElementById('count'),
     clicked = [],
@@ -107,3 +90,8 @@ window.onload = function () {
     }
   
   };
+
+  function disableCheckout(){
+    const checkout_button = document.getElementById("checkout");
+    if(checkout_button) checkout_button.setAttribute("disabled", true);
+  }
