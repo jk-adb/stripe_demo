@@ -3,7 +3,8 @@
 <head>
     <%- include('../components/head'); %>
     <script src="https://js.stripe.com/v3/"></script>
-    <script src="/s_config.js"></script>
+    <script>const stripe = Stripe('<%= s_pub_key%>');</script>
+
     <script src="/static/js/cart.js"></script>
     <style>
         .removefromcart {
@@ -50,6 +51,6 @@
     <footer>
         <%- include('../components/footer'); %>
     </footer>
+    <script src="/static/js/checkout.js"></script>
 </body>
-<script src="/static/js/checkout.js"></script>
 </html>

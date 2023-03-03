@@ -3,7 +3,8 @@
 <head>
     <%- include('../components/head'); %>
     <script src="https://js.stripe.com/v3/"></script>
-    <script src="/s_config.js"></script>
+    <!--script src="/s_config.js"></script-->
+    <script>const stripe = Stripe('<%= s_pub_key%>');</script>
     <script src="/static/js/complete-payment.js"></script>
 </head>
 <script>createProductList();</script>

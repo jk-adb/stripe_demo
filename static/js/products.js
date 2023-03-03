@@ -29,14 +29,14 @@ function displayProducts(productlist){
                     "<img src='" + image_url + "'/>" +
                 "</div>" +
                 "<div class='itemprice' id='" + productlist[i].default_price + "'></div>" +
-                "<div><button id='btn_addtocart_" + productlist[i].id + "'"+
+                "<div>" +
+                    "<button id='btn_addtocart_" + productlist[i].id + "'"+
                     "class='btn_addtocart'" +
                     " data-id='" + productlist[i].id + "'" +
                     " data-name='" + productlist[i].name +"'" +
                     " data-priceid='" + productlist[i].default_price + "'" +
                     " data-img='" + image_url + "'" +
-                ">" +
-                    "Add to Cart</button>" +
+                    ">Add to Cart</button>" +
                 "</div>" +
             "</li>";
 
@@ -54,6 +54,33 @@ function displayProducts(productlist){
         }
     }
     setItemPrice();
+}
+
+function setItemPrice() {
+    const itemprices =  document.querySelectorAll('.itemprice');
+
+    Promise.all(Array.from(itemprices).map(async item => {
+        const price = await retrievePrice(item.id)
+        item.innerHTML = "JPY: " + price;
+
+        var addbutton = document.querySelector("button[data-priceid='" + item.id + "']")
+        var data_itemprice = document.createAttribute("data-price");
+        data_itemprice.value = price;
+        addbutton.setAttributeNode(data_itemprice);
+    }));
+}
+
+async function retrievePrice(priceid){
+    const params = {priceid : priceid};
+    const query_params = new URLSearchParams(params); 
+    const response = await fetch("/productprice?" + query_params.toString(), {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+    });
+    const { unit_amount } = await response.json();
+    console.log(unit_amount);
+
+    return unit_amount;
 }
 
 function addItemToCart(){
@@ -83,31 +110,4 @@ function addItemToCart(){
         this.disabled = true;
     }
     localStorage.setItem("cart_items",JSON.stringify(cart_items));
-}
-
-function setItemPrice() {
-    const itemprices =  document.querySelectorAll('.itemprice');
-
-    Promise.all(Array.from(itemprices).map(async item => {
-        const price = await retrievePrice(item.id)
-        item.innerHTML = "JPY: " + price;
-
-        var addbutton = document.querySelector("button[data-priceid='" + item.id + "']")
-        var data_itemprice = document.createAttribute("data-price");
-        data_itemprice.value = price;
-        addbutton.setAttributeNode(data_itemprice);
-    }));
-}
-
-async function retrievePrice(priceid){
-    const params = {priceid : priceid};
-    const query_params = new URLSearchParams(params); 
-    const response = await fetch("/productprice?" + query_params.toString(), {
-        method: "GET",
-        headers: { "Content-Type": "application/json" },
-    });
-    const { unit_amount } = await response.json();
-    console.log(unit_amount);
-
-    return unit_amount;
 }

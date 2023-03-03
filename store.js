@@ -14,7 +14,7 @@ router.get('/', function(request, response){
 
 router.get('/products', async function(request, response) {
   const products = await stripe.products.list({
-    limit: 10,
+    limit: request.limit,
   });
   console.log(products);
   return response.json(products);
@@ -35,7 +35,7 @@ router.get('/cart', function(request, response){
 });
 
 router.get('/checkout', function(request, response){
-    response.render('store/checkout');
+    response.render('store/checkout', { s_pub_key: process.env.STRIPE_PUBLISHABLE_KEY });
 });
 
 router.post('/create-payment-intent', async (request, response) => {
@@ -57,7 +57,9 @@ router.post('/create-payment-intent', async (request, response) => {
 });
 
 router.get('/complete-payment', async (request, response) => {
-  response.render('store/complete-payment');
+//  response.render('store/complete-payment');
+  response.render('store/complete-payment', { s_pub_key: process.env.STRIPE_PUBLISHABLE_KEY });
+
 });
 
 // Fetch the Checkout Session to display the JSON result on the success page

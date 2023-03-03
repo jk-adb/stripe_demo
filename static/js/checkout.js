@@ -4,12 +4,12 @@ const items = localStorage.getItem("cart_items");
 let elements;
 let emailAddress = '';
 
-initialize();
-
 document.querySelector("#payment-form").addEventListener("submit", handleSubmit);
+initializePayment();
 
 // Fetches a payment intent and captures the client secret
-async function initialize() {
+async function initializePayment() {
+
   const response = await fetch("/create-payment-intent", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
